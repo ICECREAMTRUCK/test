@@ -1,0 +1,185 @@
+** Ubuntu Gnome 15.04  설정 **
+
+
+1. 소프트웨어 & 업데이트 설정 변경
+	- 좌측 상단 프로그램을 클릭 목록에서 '소프트웨어 & 업데이트' 검색
+ 	- 다운로드 위치   클릭
+    	- 기타에서 'https://ftp.daum.net/ubuntu' 선택
+
+
+2.  Vmware Tools 설치  
+     	- 윈도우와 Vmware 간의 파일 전송이 드래그로 해결됨
+
+     	https://www.youtube.com/watch?v=f0VNQ7_LOAY 	링크 참조
+
+
+2. 한글입력기 설치 
+	- Sublime-text2 사용하기 때문에 uim-byeoru  설치
+
+   	$ sudo apt-get install uim uim-byeoru
+
+	$ sudo apt-get install language-selector-gnome
+	 
+	 - 입력기 설정에서 Ibus -> uim으로 변경, Ibus 는 삭제 하지 말것
+	 - 언어 지원  에서 uim으로 설정
+	 - 지역 및 언어 hangul 로 설정 (나머지는 삭제)
+
+
+3. Docky(윈도우의 작업표시줄과 비슷한 단축 메뉴, 선택 사항)설치
+
+	$ sudo add-apt-repository ppa:ricotz/docky
+	$ sudo apt-get update
+	$ sudo apt-get install docky
+
+
+4. vi 에디터, gcc 설치 (c 프로그래밍에 필요)   
+	- 우분투 설치 시 대부분 설치 되어 있으나, 최신버전이 아니거나, 
+	- 각종 키가 오동작 하는 경우가 있어 다시 설치하는게 좋음
+	
+	$ sudo apt-get update    
+	$ sudo apt-get install vim     ( vi 에디터 설치 )
+      
+	$ sudo apt-get install gcc   ( gcc 설치 )		
+
+	- vi 에디터 설정
+
+	$ vi ~/.vimrc 
+
+	-     i 키를 눌러 입력 모드로 만들고, 아래와 같이 입력
+    
+set number            " line 표시를 해줍니다.
+set ai                    " auto index
+set si                    " smart index
+set cindent            " c style index
+set shiftwidth=4      " shift를 4칸으로 ( >, >>, <, << 등의 명령어)
+set tabstop=4         " tab을 4칸으로
+set ignorecase      " 검색시 대소문자 구별하지않음
+set hlsearch         " 검색시 하이라이트(색상 강조)
+set expandtab       " tab 대신 띄어쓰기로
+set background=dark  " 검정배경을 사용할 때, (이 색상에 맞춰 문법 하이라이트 색상이 달라집니다.)
+set nocompatible   " 방향키로 이동가능
+set fileencodings=utf-8,euc-kr    " 파일인코딩 형식 지정
+set bs=indent,eol,start    " backspace 키 사용 가능
+set history=1000    " 명령어에 대한 히스토리를 1000개까지
+set ruler              " 상태표시줄에 커서의 위치 표시
+set nobackup      " 백업파일을 만들지 않음
+set title               " 제목을 표시
+set showmatch    " 매칭되는 괄호를 보여줌
+set nowrap         " 자동 줄바꿈 하지 않음
+set wmnu           " tab 자동완성시 가능한 목록을 보여줌
+	
+syntax on        " 문법 하이라이트 킴"
+
+	- 입력이 완료 되면, ESC키를 눌러 입력 모드를 빠져 나오고, :wq (저장 후 종료)라고 치면 저장 후 에디터를 빠져 나옴
+
+
+5.  인터페이스 설정 ( 기능개선도구 ) ____-___ 선택사항 
+
+	- 글꼴 		-> 창 제목 		-> 나눔바른고딕
+	         		-> 인터페이스 	-> 나눔바른고딕
+	         		-> 문서			-> 나눔바른고딕
+	         		-> 고정폭		-> 나눔고딕코딩
+
+	- 데스크톱  	-> 데스크톱 아이콘 활성화
+				-> 마운트한 볼륨 체크
+
+			
+	- 윈도우 		-> 제목 표시줄 단추, 선택 (?)
+
+	- 확장		-> Applicarion menu
+				-> Removable drive menu
+				-> User theme
+
+5. Theme 설치 ( paper theme / icon, 하고싶으면 하셈 )	
+	
+	http://samuelhewitt.com/paper/download 
+
+	--> 다운로드 후 압축을 풀고 각각의 폴더안의 스크립트 파일 실행
+	.......$ install.sh 
+	.......$ install-icon-theme.sh
+
+	% 참고로 기본으로 깔려있는 파이어폭스 다운로드 폴더가 한글명이다,
+  	     사용하기 귀찮아지니까 영문명 폴더로 지정하자
+
+6. Oracle JDK  설치 (  그냥 나중에 필요할거 같아서 걍 깔음 )
+
+	$ sudo apt-get install python-software-properties
+	$ sudo add-apt-repository ppa:webupd8team/java
+	$ sudo apt-get update
+	$ sudo apt-get install oracle-java8-installer
+
+7. Sumlime text 2 설치
+
+	- 패키지를 업데이트 한다.	
+
+	$ sudo add-apt-repository ppa:webupd8team/sublime-text-2
+ 	$ sudo apt-get update
+	$ sudo apt-cache search sublime
+	$ sudo apt-get install sublime-text
+
+	- Ctrl + ` 눌러서, 입력창이 뜨면 아래와 같이 입력한다.
+	import urllib2,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')
+
+	- Sublime text 재실행 ( 에러 메시지 뜨면 재부팅 )
+
+	- Ctrl + Shift + p  눌러서 실행창에서 Package Control : install Package  선택, 로딩 끝날때 까지 기다림
+
+	// - Ctrl + Shift + p 눌러서 InputHelper 선택 설치  _____ 그래도 한글 입력 안 될 경우 
+
+		- InputHelper/lib 폴더의 linux_text_input_gui.py에 실행권한 부여
+
+		$ cd ~/.config/sublime-text-2/Packages/InputHelper/lib/
+		$ chmod 777 linux_text_input_gui.py
+
+		- Ctrl + Shift + z 누르면 입력창이 뜨는데 여기서 한글 입력 가능
+
+		- Sublime text  3는 InputHelper  안써도 입력 된다나 어쩐다나 더 이상은 모르겠다  ( 유료라는데 귀찮다 더는....)
+
+	- 한글 글꼴 맑은 고딕 설정 .. 탭 설정
+
+	  Preferences 		-> Settings - user 아래와 같이 입력 저장
+	  
+{
+		"default_encoding": "UTF-8",
+		"font_face": "Malgun Gothic",
+		"font_size": 12,
+		"tab_size": 2,
+		"ignored_packages": [
+			"BracketHighlighter",
+			"SideBarEnhancements",
+			"Vintage"
+		],
+		"word_wrap": true
+}
+
+	
+8. git 설치
+
+	- 먼저apt-get을 업데이트해야 한다.
+	$ sudo apt-get update
+
+	- 그리고 라이브러리를 설치한다.
+	$ sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \libz-dev libssl-dev
+
+	- git을 설치한다. 
+	$ apt-get install git
+
+
+	$ git config --global user.name "이름"
+	$ git config --global user.email "깃허브 메일주소" 	// 매번 물어보는 귀찮음을 피하기 위해 설정.
+
+	$ mkdir ~/MyProject   							// 로컬 디렉토리 만들고
+	$ cd ~/myproject      								// 디렉토리로 들어가서
+	
+	$ git init            									// 깃 명령어를 사용할 수 있는 디렉토리로 만든다.
+	$ git status          									// 현재 상태를 훑어보고
+
+	$ git add 화일명.확장자  							// 깃 주목 리스트에 화일을 추가하고 or
+	$ git add .           									// 이 명령은 현재 디렉토리의 모든 화일을 추가할 수 있다.
+	$ git commit -m “현재형으로 설명” 					// 커밋해서 스냅샷을 찍는다.
+	
+	$ git remote add origin https://github.com/username/myproject.git 
+													// 로컬과 원격 저장소를 연결한다.
+													
+	$ git remote -v 									// 연결상태를 확인한다.
+	$ git push origin master 							// 깃허브로 푸시한다.   
